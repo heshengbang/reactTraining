@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    const WebSite = React.createClass({
+        render:function () {
+            return (
+                <div>
+                    <Name name={this.props.name} />
+                    <Link site={this.props.site} />
+                </div>
+            );
+        }
+    });
+    const Name = React.createClass({
+        render:function () {
+            return (
+                    <h1>{this.props.name}</h1>
+            );
+        }
+    });
+    const Link = React.createClass({
+        render:function () {
+            return (
+                    <a href={this.props.site}>
+                        {this.props.site}
+                    </a>
+            );
+        }
+    });
+    const HelloMessage = React.createClass({
+        render:function () {
+            return <h1>Hello {this.props.name}</h1>;
+        }
+    });
+    ReactDOM.render(
+        <HelloMessage name="tongheshang"/>, document.getElementById("example")
+    );
+    ReactDOM.render(
+        <WebSite name="heshengbang" site="http://www.heshengbang.men"/>, document.getElementById("example")
+    );
+</script>
+</body>
+</html>
