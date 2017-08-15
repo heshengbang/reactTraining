@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    const Content = React.createClass({
+        render:function () {
+            return <div>
+                <button onClick={this.props.updateStateProp}>点击(Click)</button>
+                <h4>{this.props.myDataProp}</h4>
+            </div>;
+        }
+    });
+    const HelloMessage = React.createClass({
+        getInitialState: function () {
+            return {
+                value: "tongheshang",
+                flag:false
+            };
+        },
+        handleChange: function (event) {
+            const flag = !this.state.flag;
+            this.setState({
+                flag:flag,
+                value: flag ? "铜和尚" : "tongheshang"
+            });
+        },
+        render: function () {
+            const value = this.state.value;
+            return <div>
+                <Content myDataProp={value} updateStateProp={this.handleChange}/>
+            </div>;
+        }
+    });
+    ReactDOM.render(
+            <HelloMessage/>, document.getElementById("example")
+    );
+</script>
+</body>
+</html>
